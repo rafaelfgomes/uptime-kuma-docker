@@ -1,0 +1,14 @@
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:2
+    restart: unless-stopped
+    volumes:
+      - ${UPTIME_KUMA_DATA_FOLDER:-./data}:/app/data
+    networks:
+      external:
+        ipv4_address: ${UPTIME_KUMA_IP}
+
+networks:
+  external:
+    external: true
+    name: ${EXTERNAL_NETWORK_NAME}
